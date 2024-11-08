@@ -1,0 +1,23 @@
+name: Use cldr-runner setup composite action
+
+on:
+  # Allows you to trigger the workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v4
+
+        - id: foo
+          uses: ./.github/actions/cldr-runner-setup
+          with:
+            who-to-greet: 'Jim'
+
+        - run: echo random-number "$RANDOM_NUMBER"
+          shell: bash
+          env:
+            RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
+    
