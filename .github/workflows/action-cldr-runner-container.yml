@@ -1,0 +1,31 @@
+name: cldr-runner Container Execution
+
+on:
+  # Allows you to trigger the workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    
+    # Use a Docker container to run this job
+    container:
+      image: ghcr.io/cloudera-labs/cldr-runner-aws:latest  # Specify the Docker container image
+    
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      # Run a Ansible in the container
+      - name: Run some Ansible commands
+        run: |
+          echo "Running inside a container!"
+          ansible --version
+          ansible-galaxy collection list
+
+      # Run other commands
+      - name: Run other commands
+        run: |
+          cdp --version
+          terraform --version
