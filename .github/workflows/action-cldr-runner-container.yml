@@ -14,11 +14,11 @@ jobs:
     
     steps:
       # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-            clean: false
-            set-safe-directory: false        
+    #   - name: Checkout code
+    #     uses: actions/checkout@v4
+    #     with:
+    #         clean: false
+    #         set-safe-directory: false        
       
       # Run a Ansible in the container
       - name: Run some Ansible commands
